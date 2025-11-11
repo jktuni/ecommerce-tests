@@ -1,22 +1,41 @@
 import { expect } from "chai";
-import clamp from "../../src/add.js";
+import add from "../../src/add.js";
 
 describe("Tests for add.js", () => {
-  it("Both zero, should return zero", () => {
+  it("Both zero (0 + 0), should return zero (0)", () => {
     expect(add(0,0)).to.equal(0);
   });
+  it("Zero and positive (0 + 1), should return positive (1)", () => {
+    expect(add(0,1)).to.equal(1);
+  });
+  it("Zero and negative (0 + -1), should return negative (-1)", () => {
+    expect(add(0,-1)).to.equal(-1);
+  });
+  it("Both positive (2 + 2), should return positive (4)", () => {
+    expect(add(2,2)).to.equal(4);
+  });
+  it("Both negative (-2 + -2), should return negative (-4)", () => {
+    expect(add(-2,-2)).to.equal(-4);
+  });
+  it("Negative and positive (-2 + 2), should return zero (0)", () => {
+    expect(add(-2,2)).to.equal(0);
+  });
+  it("The other has decimal (1.15 + 1), should return decimal (2.15)", () => {
+    expect(add(-2,2)).to.equal(0);
+  });
+  it("Both have decimals (1.15 + 1.15), should return decimal (2.3)", () => {
+    expect(add(-2,2)).to.equal(0);
+  });
+  it("Not a number and zero ('Cat' + 0), should return string ('Cat0')", () => {
+    expect(add("Cat",0)).to.equal("Cat0");
+  });
+  it("Undefined and zero (undefined + 0), should return zero (0)", () => {
+    expect(add(undefined,0)).to.equal(0);
+  });
+  it("Null and zero  (null + 0), should return zero (0)", () => {
+    expect(add(null,0)).to.equal(0);
+  });
+  it("Both not numbers ('Cat' + 'Dog'), should return string ('CatDog')", () => {
+    expect(add("Cat","Dog")).to.equal("CatDog");
+  });
 });
-
-
-/* augend addend Case Expected result 
-0 0 Both zero 0 
-0 1 Zero and positive 1 
-0 -1 Zero and negative -1 
-2 2 Both positive 4 -2 -2 Both negative -4 -2 2 Negative and positive 0 
-1.15 1 The other has decimals 2.15 
-1.15 1.15 Both have decimals 2.3 
-“Cat” 0 Not a number and zero Error (or “Cat0”) 
-undefined 0 Undefined and zero Error (or 0) 
-null 0 Null and zero Error (or 0) 
-“Cat” “Dog” Both not numbers Error (or “CatDog”)
- */
