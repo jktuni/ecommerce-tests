@@ -1,7 +1,20 @@
 import { expect } from "chai";
-import add from "../../src/add.js";
+import add from "../../../src/add.js";
 
-describe("Tests for add.js", () => {
+/**
+ * Adds two numbers.
+ *
+ * @since 3.4.0
+ * @category Math
+ * @param {number} augend The first number in an addition.
+ * @param {number} addend The second number in an addition.
+ * @returns {number} Returns the total.
+ * @example
+ *
+ * add(6, 4)
+ * // => 10
+ */
+describe("Human generated (From test plan) tests for add.js", () => {
   it("Both zero (0 + 0), should return zero (0)", () => {
     expect(add(0,0)).to.equal(0);
   });
