@@ -36,40 +36,40 @@ import isEmpty from "../../../src/isEmpty.js";
  * // => false
  */
 describe("Human generated tests (From test plan) for isEmpty.js", () => {
-  it("string 'cat', should return false", () => {
+  it("Should return false when string 'cat'", () => {
     expect(isEmpty("cat")).to.equal(false);
   });
-  it("number 1, should return true", () => {
+  it("Should return true when number 1", () => {
     expect(isEmpty(1)).to.equal(true);
   });
-  it("bigInt 123n, should return true", () => {
+  it("Should return true when bigInt 123n", () => {
     expect(isEmpty(123n)).to.equal(true);
   });
-  it("bigInt 123n, should return true", () => {
+  it("Should return true when bigInt 123n", () => {
     expect(isEmpty(123n)).to.equal(true);
   });
-  it("boolean true, should return true", () => {
+  it("Should return true when boolean true", () => {
     expect(isEmpty(true)).to.equal(true);
   });
-  it("undefined, should return true", () => {
+  it("Should return true when undefined ", () => {
     expect(isEmpty(undefined)).to.equal(true);
   });
-  it("symbol Symbol(“id”), should return true", () => {
+  it("Should return true when symbol Symbol(“id”)", () => {
     expect(isEmpty(Symbol("id"))).to.equal(true);
   });
-  it("0 , should return true", () => {
+  it("Should return true when 0", () => {
     expect(isEmpty(0)).to.equal(true);
   });
-  it("array [1,2,3], should return false", () => {
+  it("Should return false when array [1,2,3]", () => {
     expect(isEmpty([1,2,3])).to.equal(false);
   });
-  it("object {Name:”John”}, should return false", () => {
+  it("Should return false when object {Name:”John”}", () => {
     expect(isEmpty({Name:"John"})).to.equal(false);
   });
-  it("function () => {console.log('Hello')} , should return true", () => {
+  it("Should return true when function () => {console.log('Hello')}", () => {
     expect(isEmpty(() => {console.log("Hello")})).to.equal(true);
   });
-  it("date new Date(), should return true", () => {
+  it("Should return true when date new Date()", () => {
     expect(isEmpty(new Date())).to.equal(true);
   });
 });
