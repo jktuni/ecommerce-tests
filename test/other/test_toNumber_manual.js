@@ -51,5 +51,34 @@ describe("Tests for toNumber.js", () => {
   it("String 'Cat', should return NaN", () => {
     expect(toNumber('Cat')).to.be.NaN;
   });
-
+  it("Boolean true, should return 1", () => {
+    expect(toNumber(true)).to.equal(1);
+  });
+  it("Boolean false, should return 0", () => {
+    expect(toNumber(false)).to.equal(0);
+  });
+  it("Null, should return 0", () => {
+    expect(toNumber(null)).to.equal(0);
+  });
+  it("Undefined, should return NaN", () => {
+    expect(toNumber(undefined)).to.be.NaN;
+  });
+  it("Empty string '', should return 0", () => {
+    expect(toNumber("")).to.equal(0);
+  });
+  it("String with whitespace '  42  ', should return 42", () => {
+    expect(toNumber("  42  ")).to.equal(42);
+  });
+  it("String '-10', should return -10", () => {
+    expect(toNumber("-10")).to.equal(-10);
+  });
+  it("Plain object {}, should return NaN", () => {
+    expect(toNumber({})).to.be.NaN;
+  });
+  it("Array [5], should return 5", () => {
+    expect(toNumber([5])).to.equal(5);
+  });
+  it("Array [1,2], should return NaN", () => {
+    expect(toNumber([1,2])).to.be.NaN;
+  });
 });

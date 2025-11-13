@@ -48,6 +48,18 @@ describe("Tests for ceil.js", () => {
   it("ceil(NaN), should return NaN", () => {
     expect(Number.isNaN(ceil(NaN))).to.be.true;
   });
+  it("ceil(Infinity,1), should return Infinity", () => {
+    expect(Number.isNaN(ceil(Infinity,2))).to.equal(Infinity);
+  });
+  it("ceil([5.012],1), should return 5.1", () => {
+    expect(Number.isNaN(ceil([5.012],1))).to.equal(5.1);
+  });
+  it("ceil([5.012,6.6],1), should return NaN", () => {
+    expect(Number.isNaN(ceil([5.012,6.6],1))).to.be.NaN;
+  });
+  it("ceil('5.012', 2), should return 5.1", () => {
+    expect(Number.isNaN(ceil('5.012', 2))).to.equal(5.1);
+  });
 
 });
 
