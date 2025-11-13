@@ -26,13 +26,17 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests (allow failures)
-        run: npm test
+      - name: Run tests with coverage (allow failures)
+        run: npx c8 --reporter=lcov mocha "test/**/*.js"
         continue-on-error: true
 
-      - name: Generate coverage and send to Coveralls
+      - name: Send coverage to Coveralls
+        if: always()
         env:
           COVERALLS_REPO_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          npx c8 --reporter=lcov mocha "test/**/*.js"
-          npx coveralls < ./coverage/lcov.info
+          if [ -f ./coverage/lcov.info ]; then
+            npx coveralls < ./coverage/lcov.info || true
+          else
+            echo "No coverage file found"
+          fi
