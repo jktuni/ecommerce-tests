@@ -21,43 +21,43 @@ import ceil from "../../src/ceil.js";
  * // => 6100
  */
 describe("Tests for ceil.js", () => {
-  it("ceil(2.1), should return 3", () => {
+  it("Should return 3 when ceil(2.1)", () => {
     expect(ceil(2.1)).to.equal(3);
   });
-  it("ceil(4.001, 2), should return 4.01", () => {
+  it("Should return 4.01 when ceil(4.001, 2)", () => {
     expect(ceil(4.001, 2)).to.equal(4.01);
   });
-  it("ceil(4001, -2), should return 4100", () => {
+  it("Should return 4100 when ceil(4001, -2)", () => {
     expect(ceil(4001, -2)).to.equal(4100);
   });
-  it("ceil(-2.1), should return -2", () => {
+  it("Should return -2 when ceil(-2.1)", () => {
     expect(ceil(-2.1)).to.equal(-2);
   });
-  it("ceil(-2.345, 2), should return -2.34", () => {
+  it("Should return -2.34 when ceil(-2.345, 2)", () => {
     expect(ceil(-2.345, 2)).to.equal(-2.34);
   });
-  it("ceil(4.9, 0), should return 5", () => {
+  it("Should return 5 when ceil(4.9, 0)", () => {
     expect(ceil(4.9, 0)).to.equal(5);
   });
-  it("ceil(5), should return 5", () => {
+  it("Should return 5 when ceil(5)", () => {
     expect(ceil(5)).to.equal(5);
   });
-  it("ceil(0), should return 0", () => {
+  it("Should return 0 when ceil(0)", () => {
     expect(ceil(0)).to.equal(0);
   });
-  it("ceil(NaN), should return NaN", () => {
+  it("Should return NaN when ceil(NaN)", () => {
     expect(Number.isNaN(ceil(NaN))).to.be.true;
   });
-  it("ceil(Infinity,1), should return Infinity", () => {
+  it("Should return Infinity when ceil(Infinity,1)", () => {
     expect(Number.isNaN(ceil(Infinity,2))).to.equal(Infinity);
   });
-  it("ceil([5.012],1), should return 5.1", () => {
+  it("Should return 5.1 when ceil([5.012],1)", () => {
     expect(Number.isNaN(ceil([5.012],1))).to.equal(5.1);
   });
-  it("ceil([5.012,6.6],1), should return NaN", () => {
+  it("Should return NaN when ceil([5.012,6.6],1)", () => {
     expect(Number.isNaN(ceil([5.012,6.6],1))).to.be.NaN;
   });
-  it("ceil('5.012', 2), should return 5.1", () => {
+  it("Should return 5.1 when ceil('5.012', 2)", () => {
     expect(Number.isNaN(ceil('5.012', 2))).to.equal(5.1);
   });
 

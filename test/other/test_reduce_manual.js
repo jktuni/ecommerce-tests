@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import add from "../../src/reduce.js";
+import reduce from "../../src/reduce.js";
 
 /**
  * Reduces `collection` to a value which is the accumulated result of running
@@ -35,7 +35,66 @@ import add from "../../src/reduce.js";
  * // => { '1': ['a', 'c'], '2': ['b'] } (iteration order is not guaranteed)
  */
 describe("Tests for reduce.js", () => {
-  it("Both zero (0 + 0), should return zero (0)", () => {
-    expect(add(0,0)).to.equal(0);
+
+  it("Should sum numbers with initial value", () => {
+    const result = reduce([1, 2, 3], (sum, n) => sum + n, 0);
+    expect(result).to.equal(6);
   });
+  it("Should sum numbers without explicit initial value", () => {
+    const result = reduce([1, 2, 3], (sum, n) => sum + n);
+    expect(result).to.equal(6);
+  });
+  it("Should use 0 as initial value when provided", () => {
+    const result = reduce([1, 2, 3], (sum, n) => sum + n, 0);
+    expect(result).to.equal(6);
+  });
+  it("Should return undefined for empty array without initial value", () => {
+    const result = reduce([], (sum, n) => sum + n);
+    expect(result).to.equal(undefined);
+  });
+  it("Should return initial value for empty array with initial value", () => {
+    const result = reduce([], (sum, n) => sum + n, 10);
+    expect(result).to.equal(10);
+  });
+  it("Should reduce over object values", () => {
+    const obj = { a: 1, b: 2, c: 3 };
+    const result = reduce(obj, (sum, value) => sum + value, 0);
+    expect(result).to.equal(6);
+  });
+  it("Should reduce object without explicit initial value", () => {
+    const obj = { a: 1, b: 2, c: 3 };
+    const result = reduce(obj, (sum, value) => sum + value);
+    expect(result).to.equal(6);
+  });
+  it("Should throw TypeError if iteratee is not a function", () => {
+    expect(() => reduce([1, 2, 3], null)).to.throw(TypeError);
+  });
+  it("Should not mutate original array", () => {
+    const arr = [1, 2, 3];
+    const copy = [...arr];
+    reduce(arr, (sum, n) => sum + n, 0);
+    expect(arr).to.deep.equal(copy);
+  });
+  it("Should return initial value when collection is null or undefined", () => {
+    expect(reduce(null, (sum, n) => sum + n, 5)).to.equal(5);
+    expect(reduce(undefined, (sum, n) => sum + n, 5)).to.equal(5);
+  });
+  it("Should iterate over string as array of chars", () => {
+    const result = reduce("abc", (acc, c) => acc + c.toUpperCase(), "");
+    expect(result).to.equal("ABC");
+  });
+  it("Should handle falsy initial values correctly", () => {
+    const result = reduce([true, false, true], (acc, val) => acc && val, false);
+    expect(result).to.equal(false);
+  });
+  it("Should build object from array using reduce", () => {
+    const arr = ["a", "b", "c"];
+    const result = reduce(arr, (acc, value, index) => {
+      acc[index] = value;
+      return acc;
+    }, {});
+    expect(result).to.deep.equal({ 0: "a", 1: "b", 2: "c" });
+  });
+
+
 });

@@ -1,5 +1,5 @@
 import { expect } from "chai";
-import add from "../../src/defaultTo.js";
+import defaultTo from "../../src/defaultTo.js";
 
 /**
  * Checks `value` to determine whether a default value should be returned in
@@ -20,7 +20,43 @@ import add from "../../src/defaultTo.js";
  * // => 10
  */
 describe("Tests for defaultTo.js", () => {
-  it("Both zero (0 + 0), should return zero (0)", () => {
-    expect(add(0,0)).to.equal(0);
+  it("Should return value if value is number", () => {
+    expect(defaultTo(1, 10)).to.equal(1);
+  });
+  it("Should return defaultValue if value is undefined", () => {
+    expect(defaultTo(undefined, 10)).to.equal(10);
+  });
+  it("Should return defaultValue if value is NaN", () => {
+    expect(defaultTo(NaN, 10)).to.equal(10);
+  });
+  it("Should return defaultValue if value is null", () => {
+    expect(defaultTo(null, 10)).to.equal(10);
+  });
+  it("Should return defaultValue (null) if value is undefined", () => {
+    expect(defaultTo(undefined, null)).to.equal(null);
+  });
+  it("Should return value if value is string", () => {
+    expect(defaultTo("Cat",10)).to.equal("Cat");
+  });
+  it("Should return value if value is array", () => {
+    expect(defaultTo(["Cat","Dog"],10)).to.deep.equal(["Cat","Dog"]);
+  });
+  it("Should return value if value is object", () => {
+    expect(defaultTo({name:"John"},10)).to.deep.equal({name:"John"});
+  });
+  it("Should return 0 if value is 0", () => {
+    expect(defaultTo(0, 10)).to.equal(0);
+  });
+  it("Should return false if value is false", () => {
+    expect(defaultTo(false, true)).to.equal(false);
+  });
+  it("Should return empty string if value is ''", () => {
+    expect(defaultTo('', 'default')).to.equal('');
+  });
+  it("Should return undefined if both value and defaultValue are undefined", () => {
+    expect(defaultTo(undefined, undefined)).to.equal(undefined);
+  });
+  it("Should return NaN if both value and defaultValue are NaN", () => {
+    expect(Number.isNaN(defaultTo(NaN, NaN))).to.be.true;
   });
 });

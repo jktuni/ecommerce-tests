@@ -24,61 +24,61 @@ import toNumber from "../../src/toNumber.js";
  * // => 3.2
  */
 describe("Tests for toNumber.js", () => {
-  it("Decimal 3.2, should return 3.2", () => {
+  it("Should return 3.2 when Decimal 3.2", () => {
     expect(toNumber(3.2)).to.equal(3.2);
   });
-  it("Decimal -3.2, should return -3.2", () => {
+  it("Should return -3.2 when Decimal -3.2", () => {
     expect(toNumber(-3.2)).to.equal(-3.2);
   });
-  it("Zero, should return 0", () => {
-    expect(toNumber(-3.2)).to.equal(-3.2);
+  it("Should return 0 when 0", () => {
+    expect(toNumber(0)).to.equal(0);
   });
-  it("Decimal with comma 3,2, should return 3.2", () => {
+  it("Should return 3.2 when Decimal with comma 3,2", () => {
     expect(toNumber(3,2)).to.equal(3.2);
   });
-  it("Number.MIN_VALUE, should return 5e-324", () => {
+  it("Should return 5e-324 when Number.MIN_VALUE", () => {
     expect(toNumber(Number.MIN_VALUE)).to.equal(5e-324);
   });
-  it("Infinity, should return Infinity", () => {
+  it("Should return Infinity when Infinity", () => {
     expect(toNumber(Infinity)).to.equal(Infinity);
   });
-  it("String '3.2', should return 3.2", () => {
+  it("Should return 3.2 when String '3.2'", () => {
     expect(toNumber('3.2')).to.equal(3.2);
   });
-  it("String '3,2', should return 3.2", () => {
+  it("Should return 3.2 when String '3,2'", () => {
     expect(toNumber('3,2')).to.equal(3.2);
   });
-  it("String 'Cat', should return NaN", () => {
+  it("Should return NaN when String 'Cat'", () => {
     expect(toNumber('Cat')).to.be.NaN;
   });
-  it("Boolean true, should return 1", () => {
+  it("Should return 1 when Boolean true", () => {
     expect(toNumber(true)).to.equal(1);
   });
-  it("Boolean false, should return 0", () => {
+  it("Should return 0 when Boolean false", () => {
     expect(toNumber(false)).to.equal(0);
   });
-  it("Null, should return 0", () => {
+  it("Should return 0 when Null", () => {
     expect(toNumber(null)).to.equal(0);
   });
-  it("Undefined, should return NaN", () => {
+  it("Should return NaN when Undefined", () => {
     expect(toNumber(undefined)).to.be.NaN;
   });
-  it("Empty string '', should return 0", () => {
+  it("Should return 0 when Empty string ''", () => {
     expect(toNumber("")).to.equal(0);
   });
-  it("String with whitespace '  42  ', should return 42", () => {
+  it("Should return 42 when String with whitespace '  42  '", () => {
     expect(toNumber("  42  ")).to.equal(42);
   });
-  it("String '-10', should return -10", () => {
+  it("Should return -10 when String '-10'", () => {
     expect(toNumber("-10")).to.equal(-10);
   });
-  it("Plain object {}, should return NaN", () => {
+  it("Should return NaN when Plain object {}", () => {
     expect(toNumber({})).to.be.NaN;
   });
-  it("Array [5], should return 5", () => {
+  it("Should return 5 when Array [5]", () => {
     expect(toNumber([5])).to.equal(5);
   });
-  it("Array [1,2], should return NaN", () => {
+  it("Should return NaN when Array [1,2]", () => {
     expect(toNumber([1,2])).to.be.NaN;
   });
 });
