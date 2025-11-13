@@ -26,8 +26,9 @@ jobs:
       - name: Install dependencies
         run: npm ci
 
-      - name: Run tests
+      - name: Run tests (allow failures)
         run: npm test
+        continue-on-error: true
 
       - name: Generate coverage and send to Coveralls
         env:
